@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 我的个人博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .current a {
+            color: #77aaff;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .about-section {
+            margin-top: 20px;
+        }
+        .about-section h2 {
+            color: #333;
+        }
+        .about-section p {
+            margin-bottom: 10px;
+        }
+        .about-section img {
+            width: 200px; /* 设置图片宽度为200像素 */
+            height: auto; /* 高度自动调整，保持宽高比 */
+            border-radius: 50%; /* 可选：设置图片为圆形 */
+            display: block; /* 可选：消除图片下方的空隙 */
+            margin: 0 auto; /* 可选：使图片居中 */
+        }
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>个人博客</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li class="current"><a href="about.html">关于我</a></li>
+                    <li><a href="contact.html">联系我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>关于我</h2>
+            <p>这是我的第一个博客。</p>
+            <p>这里会展示我的生活日常，感谢你的阅读，我会保持更新的，请经常来看看。</p>
+            <img src="头像.jpg" alt="头像">
+        </section>
+    </div>
+
+    <footer>
+        <p>版权所有 &copy; 2025 光头强的忠实粉</p>
+    </footer>
+</body>
+</html>

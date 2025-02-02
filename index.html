@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光头强的忠实粉个人博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .current a {
+            color: #77aaff;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .main-section {
+            margin-top: 20px;
+        }
+        article {
+            margin-bottom: 20px;
+        }
+        .article-image {
+            width: 50%;
+            height: auto;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+    /* 轮播图样式 */
+
+        .slider {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: #aaaaaa; /* 设置背景颜色，这里使用的是浅灰色 */
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%; /* 设置图片宽度为轮播图容器的宽度 */
+            max-width: 600px; /* 设置图片的最大宽度 */
+            height: 280px; /* 高度自动调整，保持图片比例 */
+            display: block;
+            margin: 0 auto; /* 水平居中图片 */
+        }
+
+        /* 搜索框样式 */
+        .search-container {
+            margin: 20px;
+        }
+        #search-box {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+        /* 没有结果的提示样式 */
+        #no-results {
+            display: none;
+            color: red;
+            margin-top: 10px;
+        }
+        /* 文章隐藏样式 */
+        .article-hidden {
+            display: none;
+        }
+        /* 页面背景样式 */
+        body {
+            background-color: #f8f8f8; /* 灰色背景 */
+            font-family: Arial, sans-serif;
+        }
+        /* 分隔线样式 */
+        .separator {
+            border: 0;
+            height: 2px;
+            background-color: #ddd; /* 灰色背景 */
+            margin: 20px 0; /* 上下间距 */
+        }
+        /* 文章分隔线样式 */
+        .article-separator {
+            border: 0;
+            height: 2px;
+            background-color: #ddd; /* 灰色背景 */
+            margin: 20px 0; /* 上下间距 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>个人博客</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="index.html">首页</a></li>
+                    <li><a href="about.html">关于我</a></li>
+                    <li><a href="contact.html">联系我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 轮播图容器 -->
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="轮播图1.jpg" alt="轮播图1"></div>
+            <div class="slide"><img src="轮播图2.jpg" alt="轮播图2"></div>
+            <div class="slide"><img src="轮播图3.jpg" alt="轮播图3"></div>
+            <!-- 添加更多图片 -->
+        </div>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-container">
+        <input type="text" id="search-box" placeholder="搜索文章...">
+        <button type="submit" onclick="searchArticle()">搜索</button>
+        <div id="no-results">这里好像什么都没有...</div>
+    </div>
+
+    <!-- 分隔线 -->
+    <hr class="separator">
+
+    <div class="container">
+        <section class="main-section">
+            <!-- 文章列表 -->
+            <article>
+                <h2>熊出没正版红包封面--2025.1.31</h2>
+                <p>我终于抢到了熊出没官方红包封面！我非常幸运，前几天我总是不幸错过，但作为熊出没的忠实粉，在最后一天我终于抢到了！这让我非常兴奋！所以特此发了个blog!</p>
+                <img src="图片1.jpg" alt="文章图片" class="article-image">
+            </article>
+            <!-- 分隔线 -->
+            <hr class="article-separator">
+            <article>
+                <h2>熊出没票房破4亿--2025.2.2</h2>
+                <p>熊出没票房破4亿，这让我作为熊粉非常开心，今年都是票王却还能达到4亿，非常的不错了！</p>
+                <img src="640.jpg" alt="文章图片" class="article-image">
+            </article>
+            <!-- 分隔线 -->
+            <hr class="article-separator">
+            <article>
+                <h2>熊出没开分--2025.2.2</h2>
+                <p>熊出没开分7.5已经很不错了，但到今天连降0.2分，不知道春节排分还能当第2吗，但目前来说还是很稳的，射雕不知道怎么样。</p>
+                <img src="图片3.jpg" alt="文章图片" class="article-image">
+            </article>
+            <hr class="article-separator">
+            <article>
+                <h2>今日春节票房--2025.2.2</h2>
+                <p>今年哪吒遥遥领先，蛟龙比较惨，希望熊出没还能进步</p>
+                <img src="图片4.jpg" alt="文章图片" class="article-image">
+            </article>
+        </section>
+    </div>
+
+    <footer>
+        <p>版权所有 &copy; 2025 光头强的忠实粉</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slider = document.querySelector('.slides');
+
+        function showSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+        setInterval(nextSlide, 3000);
+
+        // 搜索文章的函数
+        function searchArticle() {
+            const searchBox = document.getElementById('search-box');
+            const searchTerm = searchBox.value.toLowerCase();
+            const articles = document.querySelectorAll('.main-section article');
+            let found = false;
+
+            articles.forEach(article => {
+                const title = article.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    article.classList.remove('article-hidden');
+                    found = true;
+                } else {
+                    article.classList.add('article-hidden');
+                }
+            });
+
+            const noResults = document.getElementById('no-results');
+            if (!found && searchTerm !== '') {
+                noResults.style.display = 'block'; // 显示没有结果的提示
+            } else {
+                noResults.style.display = 'none'; // 隐藏没有结果的提示
+            }
+        }
+    </script>
+</body>
+</html>
