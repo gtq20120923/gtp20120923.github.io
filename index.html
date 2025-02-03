@@ -154,6 +154,15 @@
             background-color: #ddd; /* 灰色背景 */
             margin: 20px 0; /* 上下间距 */
         }
+        /* 在您的CSS中添加或修改 */
+        #no-results-image {
+            display: block; /* 将图片转换为块级元素 */
+            margin: 0 auto; /* 设置左右边距为auto，实现水平居中 */
+            display: none; /* 默认不显示 */
+            width: 50%; /* 设置图片宽度 */
+            height: auto; /* 高度自动调整，保持图片比例 */
+        }
+
     </style>
 </head>
 <body>
@@ -181,6 +190,7 @@
             <!-- 添加更多图片 -->
         </div>
     </div>
+
 
     <!-- 搜索框 -->
     <div class="search-container">
@@ -217,11 +227,20 @@
             <hr class="article-separator">
             <article>
                 <h2>今日春节票房--2025.2.2</h2>
-                <p>今年哪吒遥遥领先，蛟龙比较惨，希望熊出没还能进步</p>
+                <p>今年哪吒遥遥领先，蛟龙比较惨，希望熊出没还能进步。</p>
                 <img src="图片4.jpg" alt="文章图片" class="article-image">
             </article>
+            <hr class="article-separator">
+            <h2>今日更新--2025.2.3</h2>
+            <p>今日大更新，修复了已知bug。</p>
+            <img src="无结果.png" alt="文章图片" class="article-image">
+        </article>
+        <hr class="article-separator">
         </section>
     </div>
+    <!-- 无结果时显示的图片 -->
+    <!-- 无结果时显示的图片 -->
+    <img id="no-results-image" src="无结果.png" alt="无结果">
 
     <footer>
         <p>版权所有 &copy; 2025 光头强的忠实粉</p>
@@ -232,43 +251,59 @@
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
         const slider = document.querySelector('.slides');
-
+        const articleSeparators = document.querySelectorAll('.article-separator'); // 获取所有文章分隔线
+        const noResultsImage = document.getElementById('no-results-image'); // 获取无结果时显示的图片
+    
         function showSlide(index) {
             slider.style.transform = `translateX(-${index * 100}%)`;
         }
-
+    
         function nextSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             showSlide(currentSlide);
         }
-
+    
         showSlide(currentSlide);
         setInterval(nextSlide, 3000);
-
-        // 搜索文章的函数
+    
         function searchArticle() {
             const searchBox = document.getElementById('search-box');
             const searchTerm = searchBox.value.toLowerCase();
             const articles = document.querySelectorAll('.main-section article');
             let found = false;
-
-            articles.forEach(article => {
+        
+            articles.forEach((article, index) => {
                 const title = article.querySelector('h2').textContent.toLowerCase();
+                const nextSeparator = article.nextElementSibling; // 获取当前文章后的分隔线
+        
                 if (title.includes(searchTerm)) {
                     article.classList.remove('article-hidden');
                     found = true;
+                    // 如果当前文章后面有分隔线，并且不是最后一篇文章，则显示分隔线
+                    if (nextSeparator && nextSeparator.classList.contains('article-separator') && index < articles.length - 1) {
+                        nextSeparator.style.display = 'block';
+                    }
                 } else {
                     article.classList.add('article-hidden');
+                    // 隐藏当前文章后的分隔线
+                    if (nextSeparator && nextSeparator.classList.contains('article-separator')) {
+                        nextSeparator.style.display = 'none';
+                    }
                 }
             });
-
+        
+            // 根据搜索结果显示或隐藏无结果图片
             const noResults = document.getElementById('no-results');
             if (!found && searchTerm !== '') {
                 noResults.style.display = 'block'; // 显示没有结果的提示
+                noResultsImage.style.display = 'block'; // 显示无结果时显示的图片
             } else {
                 noResults.style.display = 'none'; // 隐藏没有结果的提示
+                noResultsImage.style.display = 'none'; // 隐藏无结果时显示的图片
             }
         }
+        
     </script>
+    
 </body>
 </html>
