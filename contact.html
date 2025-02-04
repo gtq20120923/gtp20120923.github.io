@@ -78,6 +78,7 @@
             display: inline-block;
             width: 100px;
         }
+        /* 页脚样式 */
         footer {
             position: fixed;
             left: 0;
@@ -87,8 +88,41 @@
             background-color: #333; /* 页脚背景颜色 */
             color: white; /* 页脚文字颜色 */
             text-align: center;
-            line-height: 45px; /* 使文字垂直居中 */
+            line-height: 0px; /* 使文字垂直居中 */
+            box-sizing: border-box; 
+            padding: 20px;
         }
+
+
+        /* 浮窗样式 */
+        .floating-window {
+            position: fixed;
+            right: 10px; /* 初始位置在右边 */
+            top: 50%; /* 初始位置在中间 */
+            transform: translateY(-50%); /* 使用transform进行垂直居中 */
+            width: 100px;
+            height: 100px;
+
+            z-index: 1000;
+            cursor: move; /* 更改鼠标指针为移动图标 */
+        }
+
+        .floating-window img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-window button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 1px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -119,8 +153,45 @@
         </section>
     </div>
 
+    <!-- 浮窗 -->
+    <div class="floating-window" id="floatingWindow" draggable="true">
+        <button onclick="closeFloatingWindow()">关闭</button>
+        <img src="浮窗.gif" alt="浮窗图片">
+    </div>
     <footer>
         <p>版权所有 &copy; 2025 光头强的忠实粉</p>
     </footer>
+    <script>
+        function gotoAdPage() {
+            window.location.href = 'target-page.html'; // 目标页面的文件名
+        }
+
+        var floatingWindow = document.getElementById('floatingWindow');
+        var offsetX, offsetY, initialX, initialY;
+    
+        floatingWindow.addEventListener('dragstart', function(e) {
+            // 记录鼠标相对于浮窗的初始位置
+            offsetX = e.clientX - floatingWindow.getBoundingClientRect().left;
+            offsetY = e.clientY - floatingWindow.getBoundingClientRect().top;
+        });
+    
+        document.addEventListener('dragover', function(e) {
+            e.preventDefault(); // 阻止默认行为，允许放置
+        });
+    
+        document.addEventListener('drop', function(e) {
+            e.preventDefault(); // 阻止默认行为
+            // 计算并设置浮窗的新位置
+            var newX = e.clientX - offsetX;
+            var newY = e.clientY - offsetY;
+            floatingWindow.style.right = 'auto'; // 取消right属性
+            floatingWindow.style.left = newX + 'px';
+            floatingWindow.style.top = newY + 'px';
+        });
+    
+        function closeFloatingWindow() {
+            floatingWindow.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
