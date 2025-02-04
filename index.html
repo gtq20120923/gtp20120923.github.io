@@ -69,14 +69,33 @@
             display: block;
             margin: 0 auto;
         }
+
+
+        /* 页脚样式 */
         footer {
-            padding: 20px;
-            margin-top: 20px;
+            width: 100%;
             background: #333;
             color: #fff;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box; /* 包含padding在内的高度 */
         }
 
+        /* 广告窗口样式 */
+        .ad-container {
+            width: 100%;
+            height: 203px; /* 设置您想要的高度 */
+            text-align: center;
+            cursor: pointer;
+            margin-top: 0px; /* 与上方内容保持一定间距 */
+            background: #f8f8f8; /* 广告背景颜色，可选 */
+        }
+
+        .ad-image {
+            width: 100%; /* 拉伸图片以填满容器宽度 */
+            height: 100%;
+            object-fit: cover; /* 拉伸图片以填满容器高度 */ /* 保持图片的宽高比，同时填充容器 */
+        }
     /* 轮播图样式 */
 
         .slider {
@@ -163,6 +182,48 @@
             height: auto; /* 高度自动调整，保持图片比例 */
         }
 
+
+        .ad-container {
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px; /* 与上方内容保持一定间距 */
+        }
+    
+        .ad-image {
+            width: 80%; /* 根据需要调整宽度 */
+            max-width: 600px; /* 设置最大宽度 */
+            height: auto; /* 高度自动调整，保持图片比例 */
+        }
+
+        /* 浮窗样式 */
+        .floating-window {
+            position: fixed;
+            right: 10px; /* 初始位置在右边 */
+            top: 50%; /* 初始位置在中间 */
+            transform: translateY(-50%); /* 使用transform进行垂直居中 */
+            width: 100px;
+            height: 100px;
+
+            z-index: 1000;
+            cursor: move; /* 更改鼠标指针为移动图标 */
+        }
+
+        .floating-window img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-window button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 1px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -231,16 +292,43 @@
                 <img src="图片4.jpg" alt="文章图片" class="article-image">
             </article>
             <hr class="article-separator">
-            <h2>今日更新--2025.2.3</h2>
-            <p>今日大更新，修复了已知bug。</p>
-            <img src="无结果.png" alt="文章图片" class="article-image">
-        </article>
-        <hr class="article-separator">
+            <article>
+                <h2>今日更新--2025.2.3</h2>
+                <p>今日大更新，修复了已知bug。</p>
+                <img src="无结果.png" alt="文章图片" class="article-image">
+            </article>
+            <hr class="article-separator">
+            <article>
+                <h2>明天去福州--2025.2.4</h2>
+                <p>明天去福州玩了，会断更3天。</p>
+                <img src="无结果.png" alt="文章图片" class="article-image">
+            </article>
+            <hr class="article-separator">
+            <article>
+                <h2>今日更新--2025.2.4</h2>
+                <p>今日更新加入了广告。</p>
+                <img src="浮窗.gif" alt="文章图片" class="article-image">
+            </article>
+            <hr class="article-separator">
         </section>
     </div>
     <!-- 无结果时显示的图片 -->
     <!-- 无结果时显示的图片 -->
     <img id="no-results-image" src="无结果.png" alt="无结果">
+
+
+
+    <div class="ad-container" onclick="gotoAdPage()">
+        <img src="广告.jpg" alt="广告" class="ad-image">
+    </div>
+
+
+    <!-- 浮窗 -->
+    <div class="floating-window" id="floatingWindow" draggable="true">
+        <button onclick="closeFloatingWindow()">关闭</button>
+        <img src="浮窗.gif" alt="浮窗图片">
+    </div>
+
 
     <footer>
         <p>版权所有 &copy; 2025 光头强的忠实粉</p>
@@ -303,6 +391,33 @@
             }
         }
         
+
+        var floatingWindow = document.getElementById('floatingWindow');
+        var offsetX, offsetY, initialX, initialY;
+    
+        floatingWindow.addEventListener('dragstart', function(e) {
+            // 记录鼠标相对于浮窗的初始位置
+            offsetX = e.clientX - floatingWindow.getBoundingClientRect().left;
+            offsetY = e.clientY - floatingWindow.getBoundingClientRect().top;
+        });
+    
+        document.addEventListener('dragover', function(e) {
+            e.preventDefault(); // 阻止默认行为，允许放置
+        });
+    
+        document.addEventListener('drop', function(e) {
+            e.preventDefault(); // 阻止默认行为
+            // 计算并设置浮窗的新位置
+            var newX = e.clientX - offsetX;
+            var newY = e.clientY - offsetY;
+            floatingWindow.style.right = 'auto'; // 取消right属性
+            floatingWindow.style.left = newX + 'px';
+            floatingWindow.style.top = newY + 'px';
+        });
+    
+        function closeFloatingWindow() {
+            floatingWindow.style.display = 'none';
+        }
     </script>
     
 </body>
